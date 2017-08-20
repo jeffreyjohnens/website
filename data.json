@@ -1,4 +1,4 @@
-{ "highlight" : "#efefef",
-  "default" : "#00f",
+{ "highlightMenu" : "#efefef",
+  "defaultMenu" : "#00f",
   "defaultOLD" : "#3c424c"
 }

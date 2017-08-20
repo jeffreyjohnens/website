@@ -63,7 +63,6 @@
   vertical-align: middle;
   font-family: 'Syncopate', sans-serif;
   font-size: 30pt;
-  color: #3c424c;
 }
 
 
@@ -107,7 +106,8 @@ $.getJSON("https\://jeffreyjohnens.github.io/website/data.json", function(json) 
 
 $(document).ready(function() {
   // make inner the right size
-  $("#menuBar").css("color", data["default"]);
+  $("#menuBar").css("color", data["defaultMenu"]);
+  $("#x").css("color", data["defaultMenu"]);
 
   $("#main").animate({height: $(window).innerHeight() - (border * 2)});
   $("#main").animate({width: $(window).innerWidth() - (border * 2)});
@@ -146,11 +146,11 @@ function destroy_content() {
 }
 
 function highlight(x) {
-  x.animate({color: data['highlight']});
+  x.animate({color: data['highlightMenu']});
 }
 
 function removeHighlight(x) {
-  x.animate({color: data['default']});
+  x.animate({color: data['defaultMenu']});
 }
 
 </script>
