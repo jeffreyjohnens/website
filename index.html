@@ -98,6 +98,7 @@ var border = 20;
 var built = false;
 var data = false;
 
+
 $.getJSON("https\://jeffreyjohnens.github.io/website/data.json", function(json) {
     console.log(json); // this will show the info it in firebug console
     data = json;
@@ -127,10 +128,10 @@ function build_content(key) {
   if (built == false) {
     $("#menuBar").animate({height: "100px"});
     $("#main").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
-
     $("#x").html("&times");
     built = true;
   }
+
   $("#main").animate({backgroundColor: data[key]["background"] });
   $("#contentText").css("color", data[key]["color"]);
   $("#contentText").text(data[key]["text"])
