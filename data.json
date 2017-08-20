@@ -12,6 +12,6 @@
   }],
   "contact" : [{  "color" : "#3c424c",
                   "background" : "#4e8aad",
-                  "text" : "EMAIL : [First Name][Last Name Initial]@sfu.ca"
+                  "text" : "email@sfu.ca"
   }]
 }
