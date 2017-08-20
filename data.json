@@ -1,7 +1,7 @@
 { "highlightMenu" : "#efefef",
   "defaultMenu" : "#3c424c",
 
-  "about" : {  "color" : "#3c424c",
+  "about" : {  "color" : "#efefef",
                 "background" : "#848484",
                 "text" : "I am a M.Sc. student at Simon Fraser University. My research interests include Machine Learning and Computational Creativity."
   },
