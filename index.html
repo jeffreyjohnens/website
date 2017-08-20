@@ -11,31 +11,29 @@
 
 <style>
 
-html {
-    height: 100%;
-    width: 100%;
-    display: table;
-}
-body {
-    display: table-row;
-}
-
-#d {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    border: 20px solid #efefef;
-    background: silver;
+.wrapper {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: #efefef;
 }
 
-/* this is menu stuff */
+.inner {
+  align-self: center;
+  width: 10px;
+  height: 10px;
+  background: gold;
+}
 
 .menu {
   display: -webkit-flex;
   display: flex;
-  height: 100%;
+  height: 10px;
 }
 .menuItem {
   -webkit-flex: 1;
@@ -51,15 +49,24 @@ body {
   -webkit-flex: 1;
           flex: 1;
 }
+
 .menuX {
-  -webkit-flex: 1;
-          flex: 1;
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 100;
+  background: none;
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
   align-self: center;
-  text-align: left;
+  text-align: center;
+  vertical-align: middle;
   font-family: 'Syncopate', sans-serif;
   font-size: 30pt;
   color: #3c424c;
 }
+
 
 #content {
   background: none;
@@ -86,82 +93,99 @@ body {
   color: #3c424c;
 }
 
-
 </style>
 
 <script>
-$(document).ready(function() {
-    // all custom jQuery will go here
-    // what do you want to run onload
 
-});
-
+var border = 20;
 var built = false
 
-function build_content() {
+$(document).ready(function() {
+  // make inner the right size
+  $("#main").animate({height: $(window).innerHeight() - (border * 2)});
+  $("#main").animate({width: $(window).innerWidth() - (border * 2)});
   if (built == false) {
-    $("#d").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
-    $("#x").html("&emsp;&times");
+    $("#menuBar").animate({height: $(window).innerHeight() - (border * 2)});
+  }
+});
+
+$(window).on('resize', function(){
+  $("#main").height( $(this).innerHeight() - (border * 2) );
+  $("#main").width( $(this).innerWidth() - (border * 2) );
+  if (built == false) {
+    $("#menuBar").height( $(this).innerHeight() - (border * 2) );
+  }
+});
+
+function build_content(text, color) {
+  if (built == false) {
+    $("#menuBar").animate({height: "100px"});
+    $("#main").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
+    $("#x").html("&times");
     built = true;
   }
+  $("#main").animate({backgroundColor: color });
+  $("#contentText").text(text)
 }
 
 function destroy_content() {
   if (built == true) {
+    $("#main").animate({backgroundColor: "silver" });
+    $("#menuBar").animate({height: $(window).innerHeight() - (border * 2)});
     $("#content").remove();
     $("#x").html("")
     built = false;
   }
 }
 
+function highlight(x) {
+  x.animate({color: "#ffffff"});
+}
+
+function removeHighlight(x) {
+  x.animate({color: "#3c424c"});
+}
+
 </script>
 
-</head>
-
 <body>
-    <div id="d">
+
+  <div  id="x",
+        class="menuX",
+        onmouseover='highlight($(this))',
+        onmouseout='removeHighlight($(this))',
+        onclick='destroy_content();'></div>
+
+  <div class="wrapper">
+    <div id="main", class="inner">
       <div id="menuBar", class="menu">
-        <div  id="x"
-              class="menuX",
-              onmouseover='$("#x").animate({color: "#ffffff"})',
-              onmouseout='$("#x").animate({color: "#3c424c"})',
-              onclick='$("#d").animate({backgroundColor: "silver" }); $("#menuBar").animate({height: "100%"}); destroy_content();'></div>
+
+        <div class="menuSpacer"></div>
 
         <div  id="bio",
               class="menuItem",
-              onmouseover='$("#bio").animate({color: "#ffffff"})',
-              onmouseout='$("#bio").animate({color: "#3c424c"})',
-              onclick='$("#d").animate({backgroundColor: "#848484" }); $("#menuBar").animate({height: "100px"}); build_content(); $("#contentText").text("I am a M.Sc. student at Simon Fraser University. My research interests include Machine Learning and Computational Creativity.")'>ABOUT</div>
+              onmouseover='highlight($(this))',
+              onmouseout='removeHighlight($(this))',
+              onclick='build_content("I am a M.Sc. student at Simon Fraser University. My research interests include Machine Learning and Computational Creativity.", "#848484");'>ABOUT</div>
 
         <div class="menuSpacer"></div>
 
         <div  id="pub",
               class="menuItem",
-              onmouseover='$("#pub").animate({color: "#ffffff"})',
-              onmouseout='$("#pub").animate({color: "#3c424c"})',
-              onclick='$("#d").animate({backgroundColor: "#af4d4d" }); $("#menuBar").animate({height: "100px"}); build_content(); $("#contentText").text("The Significance of the Low Complexity Dimension in Similarity Judgements. International Symposium for Music Information Retrieval 2017.")'>PUBLICATIONS</div>
+              onmouseover='highlight($(this))',
+              onmouseout='removeHighlight($(this))',
+              onclick='build_content("The Significance of the Low Complexity Dimension in Similarity Judgements. International Symposium for Music Information Retrieval 2017.", "#af4d4d")'>PUBLICATIONS</div>
 
         <div class="menuSpacer"></div>
 
         <div  id="con",
               class="menuItem",
-              onmouseover='$("#con").animate({color: "#ffffff"})',
-              onmouseout='$("#con").animate({color: "#3c424c"})',
-              onclick='$("#d").animate({backgroundColor: "#4e8aad" }); $("#menuBar").animate({height: "100px"}); build_content(); $("#contentText").text("EMAIL : [First Name][Last Name Initial]@sfu.ca")'>CONTACT</div>
+              onmouseover='highlight($(this))',
+              onmouseout='removeHighlight($(this))',
+              onclick='build_content("EMAIL : [First Name][Last Name Initial]@sfu.ca", "#4e8aad")'>CONTACT</div>
 
         <div class="menuSpacer"></div>
       </div>
-
-      <!--
-      <div id="content">
-        <div id="contentTextWrapper">
-          <div id="contentText">
-            <span></span>
-          </div>
-        </div>
-      </div>
-      -->
-
     </div>
+  </div>
 </body>
-</html>
