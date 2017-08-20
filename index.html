@@ -127,7 +127,7 @@ function build_content(text, color) {
   if (built == false) {
     $("#menuBar").animate({height: "100px"});
     $("#main").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
-    $("contentText").css("color", data["default"]);
+    $("contentText").css("color", data["defaultContent"]);
     $("#x").html("&times");
     built = true;
   }
