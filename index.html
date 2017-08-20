@@ -123,16 +123,18 @@ $(window).on('resize', function(){
   }
 });
 
-function build_content(text, color) {
+function build_content(key) {
   if (built == false) {
     $("#menuBar").animate({height: "100px"});
     $("#main").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
-    $("contentText").css("color", data["defaultContent"]);
+
     $("#x").html("&times");
     built = true;
   }
-  $("#main").animate({backgroundColor: color });
-  $("#contentText").text(text)
+  $("#main").animate({backgroundColor: data[key]["background"] });
+  $("#contentText").css("color", data[key]["color"]);
+  $("#contentText").text(data[key]["text"])
+
 }
 
 function destroy_content() {
@@ -173,7 +175,7 @@ function removeHighlight(x) {
               class="menuItem",
               onmouseover='highlight($(this))',
               onmouseout='removeHighlight($(this))',
-              onclick='build_content("I am a M.Sc. student at Simon Fraser University. My research interests include Machine Learning and Computational Creativity.", "#848484");'>ABOUT</div>
+              onclick='build_content("about");'>ABOUT</div>
 
         <div class="menuSpacer"></div>
 
@@ -181,7 +183,7 @@ function removeHighlight(x) {
               class="menuItem",
               onmouseover='highlight($(this))',
               onmouseout='removeHighlight($(this))',
-              onclick='build_content("The Significance of the Low Complexity Dimension in Similarity Judgements. International Symposium for Music Information Retrieval 2017.", "#af4d4d")'>PUBLICATIONS</div>
+              onclick='build_content("publications")'>PUBLICATIONS</div>
 
         <div class="menuSpacer"></div>
 
@@ -189,7 +191,7 @@ function removeHighlight(x) {
               class="menuItem",
               onmouseover='highlight($(this))',
               onmouseout='removeHighlight($(this))',
-              onclick='build_content("EMAIL : [First Name][Last Name Initial]@sfu.ca", "#4e8aad")'>CONTACT</div>
+              onclick='build_content("contact")'>CONTACT</div>
 
         <div class="menuSpacer"></div>
       </div>
