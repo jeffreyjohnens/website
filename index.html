@@ -43,7 +43,6 @@
   text-align: center;
   font-family: 'Bitter', serif;
   font-size: 20pt;
-  color: #3c424c;
 }
 .menuSpacer {
   -webkit-flex: 1;
@@ -98,10 +97,18 @@
 <script>
 
 var border = 20;
-var built = false
+var built = false;
+var data = false;
+
+$.getJSON("https\://jeffreyjohnens.github.io/website/data.json", function(json) {
+    console.log(json); // this will show the info it in firebug console
+    data = json;
+});
 
 $(document).ready(function() {
   // make inner the right size
+  $("#menuBar").color(data["default"]);
+  
   $("#main").animate({height: $(window).innerHeight() - (border * 2)});
   $("#main").animate({width: $(window).innerWidth() - (border * 2)});
   if (built == false) {
@@ -139,11 +146,11 @@ function destroy_content() {
 }
 
 function highlight(x) {
-  x.animate({color: "#ffffff"});
+  x.animate({color: data['highlight']});
 }
 
 function removeHighlight(x) {
-  x.animate({color: "#3c424c"});
+  x.animate({color: data['default']});
 }
 
 </script>
