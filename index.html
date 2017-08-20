@@ -1,0 +1,165 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<style>
+
+html {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+body {
+    display: table-row;
+}
+
+#d {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 20px solid #efefef;
+    background: silver;
+}
+
+/* this is menu stuff */
+
+.menu {
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+.menuItem {
+  -webkit-flex: 1;
+          flex: 1;
+  background: none;
+  align-self: center;
+  text-align: center;
+  font-family: 'Bitter', serif;
+  font-size: 20pt;
+  color: #3c424c;
+}
+.menuSpacer {
+  -webkit-flex: 1;
+          flex: 1;
+}
+.menuX {
+  -webkit-flex: 1;
+          flex: 1;
+  align-self: center;
+  text-align: left;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 30pt;
+  color: #3c424c;
+}
+
+#content {
+  background: none;
+  width: 100%;
+  height: 500px;
+}
+
+#contentTextWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 650px;
+  background: none;
+}
+
+#contentText {
+  background: none;
+  align-self: center;
+  padding: 2rem;
+  width: 66%;
+  height: 200px;
+  font-family: 'Bitter', serif;
+  font-size: 12pt;
+  color: #3c424c;
+}
+
+
+</style>
+
+<script>
+$(document).ready(function() {
+    // all custom jQuery will go here
+    // what do you want to run onload
+
+});
+
+var built = false
+
+function build_content() {
+  if (built == false) {
+    $("#d").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
+    $("#x").html("&emsp;&times");
+    built = true;
+  }
+}
+
+function destroy_content() {
+  if (built == true) {
+    $("#content").remove();
+    $("#x").html("")
+    built = false;
+  }
+}
+
+</script>
+
+</head>
+
+<body>
+    <div id="d">
+      <div id="menuBar", class="menu">
+        <div  id="x"
+              class="menuX",
+              onmouseover='$("#x").animate({color: "#ffffff"})',
+              onmouseout='$("#x").animate({color: "#3c424c"})',
+              onclick='$("#d").animate({backgroundColor: "silver" }); $("#menuBar").animate({height: "100%"}); destroy_content();'></div>
+
+        <div  id="bio",
+              class="menuItem",
+              onmouseover='$("#bio").animate({color: "#ffffff"})',
+              onmouseout='$("#bio").animate({color: "#3c424c"})',
+              onclick='$("#d").animate({backgroundColor: "#848484" }); $("#menuBar").animate({height: "100px"}); build_content(); $("#contentText").text("I am a M.Sc. student at Simon Fraser University. My research interests include Machine Learning and Computational Creativity.")'>ABOUT</div>
+
+        <div class="menuSpacer"></div>
+
+        <div  id="pub",
+              class="menuItem",
+              onmouseover='$("#pub").animate({color: "#ffffff"})',
+              onmouseout='$("#pub").animate({color: "#3c424c"})',
+              onclick='$("#d").animate({backgroundColor: "#af4d4d" }); $("#menuBar").animate({height: "100px"}); build_content(); $("#contentText").text("The Significance of the Low Complexity Dimension in Similarity Judgements. International Symposium for Music Information Retrieval 2017.")'>PUBLICATIONS</div>
+
+        <div class="menuSpacer"></div>
+
+        <div  id="con",
+              class="menuItem",
+              onmouseover='$("#con").animate({color: "#ffffff"})',
+              onmouseout='$("#con").animate({color: "#3c424c"})',
+              onclick='$("#d").animate({backgroundColor: "#4e8aad" }); $("#menuBar").animate({height: "100px"}); build_content(); $("#contentText").text("EMAIL : [First Name][Last Name Initial]@sfu.ca")'>CONTACT</div>
+
+        <div class="menuSpacer"></div>
+      </div>
+
+      <!--
+      <div id="content">
+        <div id="contentTextWrapper">
+          <div id="contentText">
+            <span></span>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+</body>
+</html>
