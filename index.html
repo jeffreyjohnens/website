@@ -107,8 +107,8 @@ $.getJSON("https\://jeffreyjohnens.github.io/website/data.json", function(json) 
 
 $(document).ready(function() {
   // make inner the right size
-  $("#menuBar").color(data["default"]);
-  
+  $("#menuBar").css("color", data["default"]);
+
   $("#main").animate({height: $(window).innerHeight() - (border * 2)});
   $("#main").animate({width: $(window).innerWidth() - (border * 2)});
   if (built == false) {
