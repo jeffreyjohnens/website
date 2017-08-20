@@ -1,3 +1,4 @@
 { "highlight" : "#efefef",
-  "default" : "#3c424c"
+  "default" : "#00f",
+  "defaultOLD" : "#3c424c"
 }
