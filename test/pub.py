@@ -16,6 +16,12 @@ def format_year_pages(entry):
     return "%s. " % (year,)
   return "%s." % (pages,)
 
+def format_download(entry):
+  link = entry.get("link", "")
+  if len(link):
+    return '<a href="%s", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a>' % (link,)
+  return ""
+
 def entry_to_text(entry):
   return '%s. "%s". In %s. %s%s%s' % (
     format_authors(entry), 
@@ -26,7 +32,8 @@ def entry_to_text(entry):
     entry.get("addendum",""))
 
 def entry_to_html(entry):
-  return '%s. "%s". In <i>%s</i>. %s%s%s' % (
+  return '%s %s. "%s". In <i>%s</i>. %s%s%s' % (
+    format_download(entry),
     format_authors(entry), 
     entry["title"], 
     entry["booktitle"], 

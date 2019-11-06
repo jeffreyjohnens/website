@@ -2,200 +2,85 @@
 <html>
 <title>Jeff Ens</title>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script>
+    window.onload = function() {
+      var a = document.getElementById("myLink");
+      a.setAttribute("href", "mailto:jeffe@sfu.ca")
+    }
+  </script>
+  <style>
 
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-<style>
-
-.wrapper {
-  display: -webkit-flex;
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background: #efefef;
-}
-
-.inner {
-  align-self: center;
-  width: 10px;
-  height: 10px;
-  background: gold;
-}
-
-.menu {
-  display: -webkit-flex;
-  display: flex;
-  height: 10px;
-}
-.menuItem {
-  -webkit-flex: 1;
-          flex: 1;
-  background: none;
-  align-self: center;
-  text-align: center;
-  font-family: 'Bitter', serif;
-  font-size: 20pt;
-}
-.menuSpacer {
-  -webkit-flex: 1;
-          flex: 1;
-}
-
-.menuX {
-  position: fixed;
-  left: 20px;
-  top: 20px;
-  z-index: 100;
-  background: none;
-  height: 100px;
-  width: 100px;
-  line-height: 100px;
-  align-self: center;
-  text-align: center;
-  vertical-align: middle;
-  font-family: 'Syncopate', sans-serif;
-  font-size: 30pt;
-}
-
-
-#content {
-  background: none;
-  width: 100%;
-  height: 500px;
-}
-
-#contentTextWrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 650px;
-  background: none;
-}
-
-#contentText {
-  background: none;
-  align-self: center;
-  padding: 2rem;
-  width: 66%;
-  height: 200px;
-  font-family: 'Bitter', serif;
-  font-size: 12pt;
-}
-
-</style>
-
-<script>
-
-var border = 20;
-var built = false;
-var data = false;
-
-
-$.getJSON("https\://jeffreyjohnens.github.io/website/data.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
-    data = json;
-});
-
-$(document).ready(function() {
-  // make inner the right size
-  $("#menuBar").css("color", data["defaultMenu"]);
-  $("#x").css("color", data["defaultMenu"]);
-
-  $("#main").animate({height: $(window).innerHeight() - (border * 2)});
-  $("#main").animate({width: $(window).innerWidth() - (border * 2)});
-  if (built == false) {
-    $("#menuBar").animate({height: $(window).innerHeight() - (border * 2)});
-  }
-});
-
-$(window).on('resize', function(){
-  $("#main").height( $(this).innerHeight() - (border * 2) );
-  $("#main").width( $(this).innerWidth() - (border * 2) );
-  if (built == false) {
-    $("#menuBar").height( $(this).innerHeight() - (border * 2) );
-  }
-});
-
-function build_content(key) {
-  if (built == false) {
-    $("#menuBar").animate({height: "100px"});
-    $("#main").append('<div id="content"><div id="contentTextWrapper"><div id="contentText"><span></span></div></div></div>');
-    $("#x").html("&times");
-    built = true;
+  @font-face {
+    font-family: "myfont";
+    src: url("FormatGrotesk-Fett.woff") format('woff');
   }
 
-  $("#main").animate({backgroundColor: data[key]["background"] });
-  $("#contentText").css("color", data[key]["color"]);
-  $("#contentText").text(data[key]["text"])
-
-}
-
-function destroy_content() {
-  if (built == true) {
-    $("#main").animate({backgroundColor: "silver" });
-    $("#menuBar").animate({height: $(window).innerHeight() - (border * 2)});
-    $("#content").remove();
-    $("#x").html("")
-    built = false;
+  body {
+    background-color:#FAFAFA;
+    color: #212121;
   }
-}
 
-function highlight(x) {
-  x.animate({color: data['highlightMenu']});
-}
+  .main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10vw 10vw;
+    width: 80vw;
+    min-height: -webkit-fill-available;
+    font-family: 'myfont', sans-serif;
+    font-size: 5.5vmax;
+    line-height: 5.5vmax;
+    font-weight: bold;
+  }
 
-function removeHighlight(x) {
-  x.animate({color: data['defaultMenu']});
-}
+  .pub {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    padding: 10vw 10vw;
+    width: 80vw;
+    min-height: -webkit-fill-available;
+    font-family: 'myfont', sans-serif;
+    font-size: 5.5vmax;
+    line-height: 5.5vmax;
+    font-weight: bold;
+  }
 
-</script>
+  .pubList {
+    font-family: 'roboto', sans-serif;
+    font-size: 1.5vmax;
+    line-height: 1.5vmax;
+    font-weight: lighter;
+  }
+
+  </style>
+</head>
 
 <body>
-
-  <div  id="x",
-        class="menuX",
-        onmouseover='highlight($(this))',
-        onmouseout='removeHighlight($(this))',
-        onclick='destroy_content();'></div>
-
   <div class="wrapper">
-    <div id="main", class="inner">
-      <div id="menuBar", class="menu">
+  <div class="main">
+    I'm <span style="color:#F01313">Jeff Ens</span>, a Ph.D. candidate studying computational creativity at Simon Fraser University. To learn more, see my <a href="#temp"; style="color:black;">publications</a>. If you have questions, <a id="myLink", href=""; style="color:black;">contact</a> me.
+  </div>
 
-        <div class="menuSpacer"></div>
-
-        <div  id="bio",
-              class="menuItem",
-              onmouseover='highlight($(this))',
-              onmouseout='removeHighlight($(this))',
-              onclick='build_content("about");'>ABOUT</div>
-
-        <div class="menuSpacer"></div>
-
-        <div  id="pub",
-              class="menuItem",
-              onmouseover='highlight($(this))',
-              onmouseout='removeHighlight($(this))',
-              onclick='build_content("publications")'>PUBLICATIONS</div>
-
-        <div class="menuSpacer"></div>
-
-        <div  id="con",
-              class="menuItem",
-              onmouseover='highlight($(this))',
-              onmouseout='removeHighlight($(this))',
-              onclick='build_content("contact")'>CONTACT</div>
-
-        <div class="menuSpacer"></div>
-      </div>
+  <div class="pub" id="temp">
+    Publications
+    <div class="pubList">
+      <br>
+      <a href="https://www.music-ir.org/mirex/abstracts/2019/EP1.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "Discriminating Symbolic Continuations with GenDetect". In <i>MIREX evaluation results</i>. 2019. <br><br>
+      <a href="http://archives.ismir.net/ismir2019/paper/000107.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "Quantifying Musical Style: Ranking Symbolic Music based on Similarity to a Style". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 20. 2019, 870-877. (Oral Pres.)<br><br>
+      <a href="https://www.aclweb.org/anthology/W19-6139.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and M Hämäläinen and J Rueter and P Pasquier. "Morphosyntactic Disambiguation in an Endangered Language Setting". In <i>Proceedings of the Nordic Conference on Computational Linguistics</i>. Vol. 22. 2019, 345--349. (Poster)<br><br>
+      R Bougueng and J Ens and P Pasquier. "Apollo: An Interactive Web Environment for Generating Symbolic MusicalPhrases using Corpus-based Style Imitation". In <i>Proceedings of the International Workshop on Musical Metacreation</i>. Vol. 7. 2019. <br><br>
+      <a href="http://computationalcreativity.net/iccc2018/sites/default/files/papers/ICCC_2018_paper_17.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "CAEMSI : A Cross-Domain Analytic Evaluation Methodology for Style Imitation". In <i>Proceedings of the International Conference of Computational Creativity</i>. Vol. 9. 2018, 64--71. (Oral Pres.) (Best Student Paper Award)<br><br>
+      <a href="http://computationalcreativity.net/iccc2018/sites/default/files/papers/ICCC_2018_paper_69.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "MIDI Database and Representation Manager for Deep Learning". In <i>Proceedings of the International Conference of Computational Creativity</i>. Vol. 9. 2018, 304. (Poster)<br><br>
+      J Ens. "A Machine Learning Framework For Generative Art". In <i>Proceedings of the National Academy of Sciences Sackler Student Fellows Symposium</i>. 2018. (Oral Pres.) (28\% acceptance rate)<br><br>
+      <a href="https://archives.ismir.net/ismir2017/paper/000079.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and B Riecke and P Pasquier. "The Significance of the Low Complexity Dimension in Music Similarity Judgements". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 18. 2017, 31--38. (Oral Pres.)<br><br>
+      J Ens. "Generating Rhythm and Harmony". In <i>Presented at the FCAT Undergrad Conference</i>. 2016. (Oral Pres.)<br><br>
     </div>
   </div>
+</div>
+
 </body>
