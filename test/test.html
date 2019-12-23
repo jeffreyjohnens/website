@@ -10,21 +10,22 @@
     window.onload = function() {
       var a = document.getElementById("myLink");
       a.setAttribute("href", "mailto:jeffe@sfu.ca");
-
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      
-      // show the font size
-      document.getElementById("bio").innerHTML += w.toString() + " " + h.toString();
-      if (w + h > 1000) {
-        document.getElementById("bio").style.fontSize = "10px";
-      }
-      else {
-        document.getElementById("bio").style.fontSize = "5.5vmax";
-      }
     }
 
+    function doFit(){
+      // set the fontsize using textFit
+      // and then set the publications header font to that size
+      var bio = document.getElementById("bio");
+      textFit(bio, {maxFontSize: 200});
+      var s = bio.getElementsByTagName("span")[0].style.fontSize;
+      document.getElementById("publications").style.fontSize = s;      
+    }
+
+    window.addEventListener("resize", doFit);
+    window.addEventListener("load", doFit);
+
   </script>
+  <script id="textFitLib" src="textFit.min.js"></script>
   <style>
 
   @font-face {
@@ -41,25 +42,26 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10vw 10vw;
-    width: 80vw;
-    min-height: -webkit-fill-available;
+    padding-top: 10vmin;
+    padding-bottom: 10vmin;
+    padding-left: 10vmin;
+    padding-right: 10vmin;
+    width: calc(100vw - 20vmin);
+    height: calc(100vh - 20vmin);
     font-family: 'myfont', sans-serif;
-    font-size: 70px;
-    font-size: 5.5vmax;
-    line-height: 5.5vmax;
   }
 
   .pub {
     position: absolute;
     top: 100vh;
     left: 0;
-    padding: 10vw 10vw;
-    width: 80vw;
-    min-height: -webkit-fill-available;
+    padding-top: 10vmin;
+    padding-bottom: 10vmin;
+    padding-left: 10vmin;
+    padding-right: 10vmin;
+    width: calc(100vw - 20vmin);
+    height: calc(100vh - 20vmin);
     font-family: 'myfont', sans-serif;
-    font-size: 5.5vmax;
-    line-height: 5.5vmax;
   }
 
   .pubList {

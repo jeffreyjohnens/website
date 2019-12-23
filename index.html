@@ -9,9 +9,23 @@
   <script>
     window.onload = function() {
       var a = document.getElementById("myLink");
-      a.setAttribute("href", "mailto:jeffe@sfu.ca")
+      a.setAttribute("href", "mailto:jeffe@sfu.ca");
     }
+
+    function doFit(){
+      // set the fontsize using textFit
+      // and then set the publications header font to that size
+      var bio = document.getElementById("bio");
+      textFit(bio, {maxFontSize: 200});
+      var s = bio.getElementsByTagName("span")[0].style.fontSize;
+      document.getElementById("publications").style.fontSize = s;      
+    }
+
+    window.addEventListener("resize", doFit);
+    window.addEventListener("load", doFit);
+
   </script>
+  <script id="textFitLib" src="textFit.min.js"></script>
   <style>
 
   @font-face {
@@ -28,25 +42,26 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10vw 10vw;
-    width: 80vw;
-    min-height: -webkit-fill-available;
+    padding-top: 10vmin;
+    padding-bottom: 10vmin;
+    padding-left: 10vmin;
+    padding-right: 10vmin;
+    width: calc(100vw - 20vmin);
+    height: calc(100vh - 20vmin);
     font-family: 'myfont', sans-serif;
-    font-size: 70px;
-    font-size: 5.5vmax;
-    line-height: 5.5vmax;
   }
 
   .pub {
     position: absolute;
     top: 100vh;
     left: 0;
-    padding: 10vw 10vw;
-    width: 80vw;
-    min-height: -webkit-fill-available;
+    padding-top: 10vmin;
+    padding-bottom: 10vmin;
+    padding-left: 10vmin;
+    padding-right: 10vmin;
+    width: calc(100vw - 20vmin);
+    height: calc(100vh - 20vmin);
     font-family: 'myfont', sans-serif;
-    font-size: 5.5vmax;
-    line-height: 5.5vmax;
   }
 
   .pubList {
@@ -61,7 +76,7 @@
 
 <body>
   <div class="wrapper">
-  <div class="main">
+  <div class="main" id="bio">
     I'm <span style="color:#F01313">Jeff Ens</span>, a Ph.D. candidate studying computational creativity at Simon Fraser University. To learn more, see my <a href="#publications"; style="color:black;">publications</a>. If you have questions, <a id="myLink", href=""; style="color:black;">contact</a> me.
   </div>
 
