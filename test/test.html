@@ -9,8 +9,21 @@
   <script>
     window.onload = function() {
       var a = document.getElementById("myLink");
-      a.setAttribute("href", "mailto:jeffe@sfu.ca")
+      a.setAttribute("href", "mailto:jeffe@sfu.ca");
+
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      
+      // show the font size
+      document.getElementById("bio").innerHTML += w.toString() + " " + h.toString();
+      if (w + h > 1000) {
+        document.getElementById("bio").style.fontSize = "10px";
+      }
+      else {
+        document.getElementById("bio").style.fontSize = "5.5vmax";
+      }
     }
+
   </script>
   <style>
 
@@ -61,7 +74,7 @@
 
 <body>
   <div class="wrapper">
-  <div class="main">
+  <div class="main" id="bio">
     I'm <span style="color:#F01313">Jeff Ens</span>, a Ph.D. candidate studying computational creativity at Simon Fraser University. To learn more, see my <a href="#publications"; style="color:black;">publications</a>. If you have questions, <a id="myLink", href=""; style="color:black;">contact</a> me.
   </div>
 
