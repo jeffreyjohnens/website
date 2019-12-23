@@ -17,6 +17,8 @@
       // and then set the publications header font to that size
       var bio = document.getElementById("bio");
       textFit(bio, {maxFontSize: 200});
+      bio.style.visibility = "visible";
+
       var s = bio.getElementsByTagName("span")[0].style.fontSize;
       document.getElementById("publications").style.fontSize = s;      
     }
@@ -50,6 +52,7 @@
     width: calc(100vw - 20vmin);
     height: calc(100vh - 20vmin);
     font-family: 'myfont', sans-serif;
+    visibility:hidden;
   }
 
   .pub {
