@@ -2,102 +2,201 @@
 <html>
 <title>Jeff Ens</title>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-  <script>
-    window.onload = function() {
-      var a = document.getElementById("myLink");
-      a.setAttribute("href", "mailto:jeffe@sfu.ca");
-    }
+  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    function doFit(){
-      // set the fontsize using textFit
-      // and then set the publications header font to that size
-      var bio = document.getElementById("bio");
-      textFit(bio, {maxFontSize: 200});
-      bio.style.visibility = "visible";
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-      var s = bio.getElementsByTagName("span")[0].style.fontSize;
-      document.getElementById("publications").style.fontSize = s;      
-    }
-
-    window.setTimeout(doFit, 1);
-    window.addEventListener("resize", doFit);
-
-  </script>
-  <script id="textFitLib" src="textFit.min.js"></script>
-  <style>
-
-  @font-face {
-    font-family: "myfont";
-    src: url("FormatGrotesk-Fett.woff") format('woff');
-  }
-
-  body {
-    background-color:#FAFAFA;
-    color: #212121;
-  }
-
-  .main {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 10vmin;
-    padding-bottom: 10vmin;
-    padding-left: 10vmin;
-    padding-right: 10vmin;
-    width: calc(100vw - 20vmin);
-    height: calc(100vh - 20vmin);
-    font-family: 'myfont', sans-serif;
-    visibility:hidden;
-  }
-
-  .pub {
-    position: absolute;
-    top: 100vh;
-    left: 0;
-    padding-top: 10vmin;
-    padding-bottom: 10vmin;
-    padding-left: 10vmin;
-    padding-right: 10vmin;
-    width: calc(100vw - 20vmin);
-    height: calc(100vh - 20vmin);
-    font-family: 'myfont', sans-serif;
-  }
-
-  .pubList {
-    font-family: 'roboto', sans-serif;
-    font-size: 1.5vmax;
-    line-height: 1.75vmax;
-    font-weight: lighter;
-  }
-
-  </style>
 </head>
+<style>
 
+    @font-face {
+        font-family: "myfont";
+        src: url("assets/FormatGrotesk-Fett.woff") format('woff');
+    }
+
+    body {
+        margin: 0;
+    }
+    .default {
+        font-family: 'roboto', sans-serif;
+        font-weight: 800;
+        font-size: 24px;
+        height: 100vh;
+        background-color: blue;
+        margin: 0;
+        padding: 0;
+        left: 0px;
+
+        display: flex;
+        flex-direction: column;
+    }
+    .red {
+        background: linear-gradient(#F45050, #eb5f52);
+        color: #eeeeee;
+    }
+    .pink {
+        background: linear-gradient(#FCE9F1, #f5d7e4);
+        color: #131313;
+    }
+    .blue {
+        background: linear-gradient(#23262e, #1e2129);
+        color: #eeeeee;
+    }
+    .beige {
+        background: linear-gradient(#f0f0f0, #f5eedf);
+    }
+    .yellow {
+        background: linear-gradient(#F9D949, #F9D949);
+    }
+    .title {
+        font-family: 'roboto', 'sans-serif';
+        font-size: 50px;
+        padding-bottom: 100px;
+    }
+    .title_tight {
+        font-family: 'roboto', 'sans-serif';
+        font-size: 50px;
+        padding-bottom: 20px;
+    }
+    .filler {
+        flex-grow: 1;
+    }
+    .pub {
+        padding-left: 5vw;
+        padding-right: 5vw;
+        padding-top: 2vh;
+        min-height: 20vh;
+        font-size: 20px;
+    }
+    .split {
+        display: flex;
+        flex-direction: row;
+        height: 80vh;
+    }
+    .left_section {
+        width: 50vw;
+        padding: 5vw;
+        display: flex;
+        flex-direction: column;
+        height: 70vh;
+    }
+    .right_section {
+        width: 50vw;
+        padding: 5vw;
+    }
+    .links {
+        display: flex;
+        flex-direction: row;
+        padding-top: 100px;
+    }
+    .number {
+        font-family: 'myfont';
+        font-size: 40px;
+        font-weight: 1200;
+    }
+</style>
 <body>
-  <div class="wrapper">
-  <div class="main" id="bio">
-    I'm <span style="color:#F01313">Jeff Ens</span>, a Ph.D. candidate studying computational creativity at Simon Fraser University. To learn more, see my <a href="#publications"; style="color:black;">publications</a>. Have questions? <a id="myLink", href=""; style="color:black;">contact</a> me.
-  </div>
-
-  <div class="pub" id="publications">
-    Publications
-    <div class="pubList">
-      <br>
-      <a href="https://www.music-ir.org/mirex/abstracts/2019/EP1.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "Discriminating Symbolic Continuations with GenDetect". In <i>MIREX evaluation results</i>. 2019. <br><br>
-      <a href="http://archives.ismir.net/ismir2019/paper/000107.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "Quantifying Musical Style: Ranking Symbolic Music based on Similarity to a Style". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 20. 2019, 870-877. (Oral Pres.)<br><br>
-      <a href="https://www.aclweb.org/anthology/W19-6139.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and M Hämäläinen and J Rueter and P Pasquier. "Morphosyntactic Disambiguation in an Endangered Language Setting". In <i>Proceedings of the Nordic Conference on Computational Linguistics</i>. Vol. 22. 2019, 345--349. (Poster)<br><br>
-      R Bougueng and J Ens and P Pasquier. "Apollo: An Interactive Web Environment for Generating Symbolic MusicalPhrases using Corpus-based Style Imitation". In <i>Proceedings of the International Workshop on Musical Metacreation</i>. Vol. 7. 2019. <br><br>
-      <a href="http://computationalcreativity.net/iccc2018/sites/default/files/papers/ICCC_2018_paper_17.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "CAEMSI : A Cross-Domain Analytic Evaluation Methodology for Style Imitation". In <i>Proceedings of the International Conference of Computational Creativity</i>. Vol. 9. 2018, 64--71. (Oral Pres.) (Best Student Paper Award)<br><br>
-      <a href="http://computationalcreativity.net/iccc2018/sites/default/files/papers/ICCC_2018_paper_69.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and P Pasquier. "MIDI Database and Representation Manager for Deep Learning". In <i>Proceedings of the International Conference of Computational Creativity</i>. Vol. 9. 2018, 304. (Poster)<br><br>
-      J Ens. "A Machine Learning Framework For Generative Art". In <i>Proceedings of the National Academy of Sciences Sackler Student Fellows Symposium</i>. 2018. (Oral Pres.) (28\% acceptance rate)<br><br>
-      <a href="https://archives.ismir.net/ismir2017/paper/000079.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax">get_app</a> J Ens and B Riecke and P Pasquier. "The Significance of the Low Complexity Dimension in Music Similarity Judgements". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 18. 2017, 31--38. (Oral Pres.)<br><br>
-      J Ens. "Generating Rhythm and Harmony". In <i>Presented at the FCAT Undergrad Conference</i>. 2016. (Oral Pres.)<br><br>
+    <div class="default red">
+        <div class="split">
+            <div class="left_section">
+                <div class="title_tight">Jeff Ens</div>
+                <div>Ph.D. Computer Science</div>
+                <div></div>
+                
+            </div>
+            <div class="right_section">
+                <span style="font-size:40px; font-family:myfont;">
+                    I enjoy finding solutions to real world problems using Artificial Intelligence. My doctoral research focused on developing generative music systems, which are currently being integrated into real world products ranging from digital audio workstations to audio synthesizers.
+                </span>
+            </div>
+            
+        </div>
+        <div class="filler"></div>
+        <div class="pub">
+            <span style="color:#131313">Scroll down to explore some of my projects.</span>
+        </div>
     </div>
-  </div>
-</div>
+    <div class="default beige">
+        <div class="split">
+            <div class="left_section">
+                <div class="title">MetaMIDI Dataset</div>
+                
+                <div><span class="number">436,631</span> MIDI files</div>
+                <div><span class="number">32,000,000</span> Spotify tracks queried for matches</div>
+                <div><span class="number">1,685</span> Downloads</div>
 
+                <div class="filler"></div>
+                
+                <div class="links">
+                    <a href="https://github.com/jeffreyjohnens/MetaMIDIDataset" target="_blank"><img src="assets/github-mark.svg" style="height:50px"></a>
+                    <a href="https://zenodo.org/record/5142664" target="_blank"><img src="assets/zenodo-black-border.svg" style="height:50px"></a>
+                </div>
+            </div>
+            <div class="right_section">
+                The MetaMIDI Dataset, is a large scale collection of MIDI files and metadata. MIDI files in MMD were matched against a collection of 32,000,000 30-second audio clips retrieved from the Spotify API, resulting in over 10,796,557 audio-MIDI matches. In addition, we linked 600,142 Spotify tracks with 1,094,901 MusicBrainz recordings to produce a set of 168,032 MIDI files that are matched to the MusicBrainz database.
+            </div>
+        </div>
+        <div class="filler"></div>
+        <div class="pub">
+            <a href="https://archives.ismir.net/ismir2021/paper/000022.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#131313">get_app</a> J Ens and P Pasquier. "Building the MetaMIDI Dataset: Linking Symbolic and Audio Musical Data". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 22. 2021, 182-188. (Oral Pres.) 
+        </div>
+    </div>
+    <div class="default blue">
+        <div class="split">
+            <div class="left_section">
+                <div class="title">Multi-Track Music Machine (MMM)</div>
+                
+                <div><span class="number">2</span> albums produced using MMM - Ableton Live Plugin<a href="https://philtremble.bandcamp.com/album/blockhouse-dy20-electro" target="_blank" style="text-decoration:none;color:#eeeeee"><sup>1</sup></a><sup>,</sup><a href="https://open.spotify.com/artist/3AcNnEmImsLGiOQbv9r3Ha?si=wScZ5QewRVqZ7lQjcy0haA" target="_blank" style="text-decoration:none;color:#eeeeee"><sup>2</sup></a>.</div>
+                <div><span class="number">3</span> software integrations of MMM.<br>Ableton Live Plugin, Cubase-MMM, Teenage Engineering</div>
+        
+            </div>
+            <div class="right_section">
+                MMM is a generative system based on the Transformer architecture that is designed to support co-creative music composition workflows. It supports the infilling of musical material on the track and bar level, and can condition generation on particular attributes including: instrument type, note density, polyphony level, and note duration.
+
+                <video width="100%" controls style="padding-top:5vh">
+                    <source src="https://www.sfu.ca/~jeffe/LBD_DEMO/video_prop.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+        </div>
+        <div class="filler"></div>
+        <div class="pub">
+            <a href="https://www.ijcai.org/proceedings/2023/0640.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#eeeeee">get_app</a>Bougueng, R., Ens, J., Plut, C., Pasquier, P., Safi, M., Grabit, Y., Rolland, J-B. "Evaluating Human-AI Interaction via Usability, User Experience and Acceptance Measures for MMM-C: A Creative AI System for Music Composition.". In <i>Proceedings of the 32nd International Joint Conference on Artificial Intelligence (IJCAI)</i>. 2023. 5769-5778.
+            <br><br>
+            <a href="https://arxiv.org/pdf/2008.06048.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#eeeeee">get_app</a> J Ens and P Pasquier. "MMM: Exploring Conditional Multi-Track Music Generation with the Transformer". In <i>arXiv preprint arXiv:2008.06048</i>. 2020.
+        </div>
+    </div>
+    <div class="default yellow">
+        <div class="split">
+            <div class="left_section">
+                <div class="title">Style Rank</div>
+                
+                <div><span class="number">81%+</span> accuracy discriminating genres.</div>
+                <div><span class="number">96%+</span> accuracy discriminating composers.</div>
+                <div><span class="number">99%</span> accuracy on 2019 MIREX Patterns for Prediction Task<a href="https://www.music-ir.org/mirex/wiki/2019:Patterns_for_Prediction_Results" target="_blank" style="text-decoration:none"><sup>1</sup></a>.</div>
+
+                <div class="filler"></div>
+                <div><a href="https://github.com/jeffreyjohnens/style_rank" target="_blank"><img src="assets/github-mark.svg" style="width:50px"></a></div>
+            </div>
+            <div class="right_section">
+                StyleRank is a method to measure the similarity between a MIDI file and an arbitrary musical style delineated by a collection of MIDI files. MIDI files are encoded using a novel set of features and an embedding is learned using Random Forests. Experimental evidence demonstrates that StyleRank is highly correlated with human perception of stylistic similarity, and that it is precise enough to rank generated samples based on their similarity to the style of a corpus.
+
+                <img src="assets/style_rank.jpg" style="width:100%;padding-top:5vh"></img>
+            </div>
+            
+        </div>
+        <div class="filler"></div>
+        <div class="pub">
+            <a href="http://archives.ismir.net/ismir2019/paper/000107.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#131313">get_app</a> J Ens and P Pasquier. "Quantifying Musical Style: Ranking Symbolic Music based on Similarity to a Style". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 20. 2019, 870-877. (Oral Pres.)
+            <br><br>
+            <a href="https://www.music-ir.org/mirex/abstracts/2019/EP1.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#131313">get_app</a> J Ens and P Pasquier. "Discriminating Symbolic Continuations with GenDetect". In <i>MIREX evaluation results</i>. 2019. <br><br>
+        </div>
+
+        
+    </div>
 </body>
