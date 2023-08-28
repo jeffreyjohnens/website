@@ -26,14 +26,9 @@
         font-family: 'roboto', sans-serif;
         font-weight: 800;
         font-size: 24px;
-        height: 100vh;
-        background-color: blue;
         margin: 0;
         padding: 0;
-        left: 0px;
 
-        display: flex;
-        flex-direction: column;
     }
     .red {
         background: linear-gradient(#F45050, #eb5f52);
@@ -69,35 +64,46 @@
     .pub {
         padding-left: 5vw;
         padding-right: 5vw;
-        padding-top: 2vh;
-        min-height: 20vh;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
         font-size: 20px;
     }
     .split {
         display: flex;
-        flex-direction: row;
-        height: 80vh;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
     }
     .left_section {
-        width: 50vw;
+        width: 400px;
+        min-width: 400px;
+        flex-grow: 1;
         padding: 5vw;
         display: flex;
         flex-direction: column;
-        height: 70vh;
     }
     .right_section {
-        width: 50vw;
+        width: 400px;
+        min-width: 400px;
+        flex-grow: 1;
         padding: 5vw;
-    }
-    .links {
         display: flex;
-        flex-direction: row;
-        padding-top: 100px;
+        flex-direction: column;
+    }
+    .full_page {
+        min-height: 100vh;
     }
     .number {
         font-family: 'myfont';
         font-size: 40px;
         font-weight: 1200;
+    }
+    p {
+        animation: color-change 5s infinite;
+    }
+    @keyframes color-change {
+        0% {color: #F45050;}
+        50% {color: #eeeeee;}
+        100% {color: #F45050;}
     }
 </style>
 <body>
@@ -106,20 +112,22 @@
             <div class="left_section">
                 <div class="title_tight">Jeff Ens</div>
                 <div>Ph.D. Computer Science</div>
-                <div></div>
+                <div class="filler"></div>
                 
             </div>
-            <div class="right_section">
-                <span style="font-size:40px; font-family:myfont;">
-                    I enjoy finding solutions to real world problems using Artificial Intelligence. My doctoral research focused on developing generative music systems, which are currently being integrated into real world products ranging from digital audio workstations to audio synthesizers.
-                </span>
+            <div class="right_section full_page">
+                <div>
+                    <span style="font-size:40px; font-family:myfont;">
+                        I enjoy finding solutions to real world problems using Artificial Intelligence. My doctoral research focused on developing generative music systems, which are currently being integrated into real world products ranging from digital audio workstations to audio synthesizers.
+                    </span>
+                </div>
+                <div style="height:20vh"></div>
+                <div>
+                    <p class="anim" style="color:#131313">Scroll down to explore some of my projects.</p>
+                </div>
             </div>
             
-        </div>
-        <div class="filler"></div>
-        <div class="pub">
-            <span style="color:#131313">Scroll down to explore some of my projects.</span>
-        </div>
+        </div>            
     </div>
     <div class="default beige">
         <div class="split">
@@ -129,13 +137,6 @@
                 <div><span class="number">436,631</span> MIDI files</div>
                 <div><span class="number">32,000,000</span> Spotify tracks queried for matches</div>
                 <div><span class="number">1,685</span> Downloads</div>
-
-                <div class="filler"></div>
-                
-                <div class="links">
-                    <a href="https://github.com/jeffreyjohnens/MetaMIDIDataset" target="_blank"><img src="assets/github-mark.svg" style="height:50px"></a>
-                    <a href="https://zenodo.org/record/5142664" target="_blank"><img src="assets/zenodo-black-border.svg" style="height:50px"></a>
-                </div>
             </div>
             <div class="right_section">
                 The MetaMIDI Dataset, is a large scale collection of MIDI files and metadata. MIDI files in MMD were matched against a collection of 32,000,000 30-second audio clips retrieved from the Spotify API, resulting in over 10,796,557 audio-MIDI matches. In addition, we linked 600,142 Spotify tracks with 1,094,901 MusicBrainz recordings to produce a set of 168,032 MIDI files that are matched to the MusicBrainz database.
@@ -143,6 +144,10 @@
         </div>
         <div class="filler"></div>
         <div class="pub">
+            <a href="https://github.com/jeffreyjohnens/MetaMIDIDataset" target="_blank" style="text-decoration:none;color:#131313"><img src="assets/github-mark.svg" style="width:25px;padding-right:10px">https://github.com/jeffreyjohnens/MetaMIDIDataset</a>
+            <br><br>
+            <a href="https://zenodo.org/record/5142664" target="_blank" style="text-decoration:none;color:#131313"><img src="assets/zenodo-black.svg" style="height:25px;padding-right:10px">https://zenodo.org/record/5142664</a>
+            <br><br>
             <a href="https://archives.ismir.net/ismir2021/paper/000022.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#131313">get_app</a> J Ens and P Pasquier. "Building the MetaMIDI Dataset: Linking Symbolic and Audio Musical Data". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 22. 2021, 182-188. (Oral Pres.) 
         </div>
     </div>
@@ -174,14 +179,17 @@
     <div class="default yellow">
         <div class="split">
             <div class="left_section">
-                <div class="title">Style Rank</div>
+                <div class="title">
+                    Style Rank
+                    
+                </div>
                 
                 <div><span class="number">81%+</span> accuracy discriminating genres.</div>
                 <div><span class="number">96%+</span> accuracy discriminating composers.</div>
                 <div><span class="number">99%</span> accuracy on 2019 MIREX Patterns for Prediction Task<a href="https://www.music-ir.org/mirex/wiki/2019:Patterns_for_Prediction_Results" target="_blank" style="text-decoration:none"><sup>1</sup></a>.</div>
 
                 <div class="filler"></div>
-                <div><a href="https://github.com/jeffreyjohnens/style_rank" target="_blank"><img src="assets/github-mark.svg" style="width:50px"></a></div>
+                
             </div>
             <div class="right_section">
                 StyleRank is a method to measure the similarity between a MIDI file and an arbitrary musical style delineated by a collection of MIDI files. MIDI files are encoded using a novel set of features and an embedding is learned using Random Forests. Experimental evidence demonstrates that StyleRank is highly correlated with human perception of stylistic similarity, and that it is precise enough to rank generated samples based on their similarity to the style of a corpus.
@@ -192,11 +200,11 @@
         </div>
         <div class="filler"></div>
         <div class="pub">
+            <a href="https://github.com/jeffreyjohnens/style_rank" target="_blank" style="text-decoration:none;color:#131313"><img src="assets/github-mark.svg" style="width:25px;padding-right:10px">https://github.com/jeffreyjohnens/style_rank</a>
+            <br><br>
             <a href="http://archives.ismir.net/ismir2019/paper/000107.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#131313">get_app</a> J Ens and P Pasquier. "Quantifying Musical Style: Ranking Symbolic Music based on Similarity to a Style". In <i>Proceedings of the International Symposium on Music Information Retrieval</i>. Vol. 20. 2019, 870-877. (Oral Pres.)
             <br><br>
             <a href="https://www.music-ir.org/mirex/abstracts/2019/EP1.pdf", target="_blank", class="material-icons", style="text-decoration:none;font-size:1.2vmax;color:#131313">get_app</a> J Ens and P Pasquier. "Discriminating Symbolic Continuations with GenDetect". In <i>MIREX evaluation results</i>. 2019. <br><br>
         </div>
-
-        
     </div>
 </body>
