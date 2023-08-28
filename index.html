@@ -2,15 +2,10 @@
 <html>
 <title>Jeff Ens</title>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <style>
 
@@ -21,22 +16,18 @@
 
     body {
         margin: 0;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
     }
     .default {
-        font-family: 'roboto', sans-serif;
-        font-weight: 800;
-        font-size: 24px;
         margin: 0;
         padding: 0;
-
     }
     .red {
         background: linear-gradient(#F45050, #eb5f52);
         color: #eeeeee;
-    }
-    .pink {
-        background: linear-gradient(#FCE9F1, #f5d7e4);
-        color: #131313;
     }
     .blue {
         background: linear-gradient(#23262e, #1e2129);
@@ -49,12 +40,16 @@
         background: linear-gradient(#F9D949, #F9D949);
     }
     .title {
-        font-family: 'roboto', 'sans-serif';
+        font-family: 'Roboto', 'sans-serif';
+        font-weight: 600;
+        font-style: normal;
         font-size: 50px;
-        padding-bottom: 100px;
+        padding-bottom: 150px;
     }
     .title_tight {
-        font-family: 'roboto', 'sans-serif';
+        font-family: 'Roboto', 'sans-serif';
+        font-weight: 600;
+        font-style: normal;
         font-size: 50px;
         padding-bottom: 20px;
     }
@@ -96,6 +91,7 @@
         font-family: 'myfont';
         font-size: 40px;
         font-weight: 1200;
+        font-style: normal;
     }
     p {
         animation: color-change 5s infinite;
@@ -113,7 +109,6 @@
                 <div class="title_tight">Jeff Ens</div>
                 <div>Ph.D. Computer Science</div>
                 <div class="filler"></div>
-                
             </div>
             <div class="right_section full_page">
                 <div>
@@ -133,13 +128,14 @@
         <div class="split">
             <div class="left_section">
                 <div class="title">MetaMIDI Dataset</div>
-                
                 <div><span class="number">436,631</span> MIDI files</div>
                 <div><span class="number">32,000,000</span> Spotify tracks queried for matches</div>
                 <div><span class="number">1,685</span> Downloads</div>
             </div>
             <div class="right_section">
-                The MetaMIDI Dataset, is a large scale collection of MIDI files and metadata. MIDI files in MMD were matched against a collection of 32,000,000 30-second audio clips retrieved from the Spotify API, resulting in over 10,796,557 audio-MIDI matches. In addition, we linked 600,142 Spotify tracks with 1,094,901 MusicBrainz recordings to produce a set of 168,032 MIDI files that are matched to the MusicBrainz database.
+                The MetaMIDI Dataset is a large scale collection of MIDI files and metadata. MIDI files in MMD were matched against a collection of 32,000,000 30-second audio clips retrieved from the Spotify API, resulting in over 10,796,557 audio-MIDI matches. In addition, we linked 600,142 Spotify tracks with 1,094,901 MusicBrainz recordings to produce a set of 168,032 MIDI files that are matched to the MusicBrainz database.
+                
+                <img src="assets/piano_roll.jpg" style="width:100%;padding-top:5vh"></img>
             </div>
         </div>
         <div class="filler"></div>
@@ -155,19 +151,15 @@
         <div class="split">
             <div class="left_section">
                 <div class="title">Multi-Track Music Machine (MMM)</div>
-                
                 <div><span class="number">2</span> albums produced using MMM - Ableton Live Plugin<a href="https://philtremble.bandcamp.com/album/blockhouse-dy20-electro" target="_blank" style="text-decoration:none;color:#eeeeee"><sup>1</sup></a><sup>,</sup><a href="https://open.spotify.com/artist/3AcNnEmImsLGiOQbv9r3Ha?si=wScZ5QewRVqZ7lQjcy0haA" target="_blank" style="text-decoration:none;color:#eeeeee"><sup>2</sup></a>.</div>
-                <div><span class="number">3</span> software integrations of MMM.<br>Ableton Live Plugin, Cubase-MMM, Teenage Engineering</div>
-        
+                <div><span class="number">3</span> software integrations of MMM:<br>Ableton Live Plugin, Cubase-MMM, Teenage Engineering</div>
             </div>
             <div class="right_section">
                 MMM is a generative system based on the Transformer architecture that is designed to support co-creative music composition workflows. It supports the infilling of musical material on the track and bar level, and can condition generation on particular attributes including: instrument type, note density, polyphony level, and note duration.
-
                 <video width="100%" controls style="padding-top:5vh">
                     <source src="https://www.sfu.ca/~jeffe/LBD_DEMO/video_prop.mp4" type="video/mp4">
                 </video>
             </div>
-            
         </div>
         <div class="filler"></div>
         <div class="pub">
@@ -179,17 +171,10 @@
     <div class="default yellow">
         <div class="split">
             <div class="left_section">
-                <div class="title">
-                    Style Rank
-                    
-                </div>
-                
+                <div class="title">Style Rank</div>
                 <div><span class="number">81%+</span> accuracy discriminating genres.</div>
                 <div><span class="number">96%+</span> accuracy discriminating composers.</div>
                 <div><span class="number">99%</span> accuracy on 2019 MIREX Patterns for Prediction Task<a href="https://www.music-ir.org/mirex/wiki/2019:Patterns_for_Prediction_Results" target="_blank" style="text-decoration:none"><sup>1</sup></a>.</div>
-
-                <div class="filler"></div>
-                
             </div>
             <div class="right_section">
                 StyleRank is a method to measure the similarity between a MIDI file and an arbitrary musical style delineated by a collection of MIDI files. MIDI files are encoded using a novel set of features and an embedding is learned using Random Forests. Experimental evidence demonstrates that StyleRank is highly correlated with human perception of stylistic similarity, and that it is precise enough to rank generated samples based on their similarity to the style of a corpus.
